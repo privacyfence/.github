@@ -1,0 +1,64 @@
+# GitHub issue form for agent tasks. Put it in your organisation's `.github`
+# repository as .github/ISSUE_TEMPLATE/agent-task.yml to offer it in every
+# repository, or in a single repository's .github/ISSUE_TEMPLATE/.
+# The headings below are what the intake parses; keep the labels as they are.
+name: Agent task
+description: Ask an agent team to plan, implement and review a change (or write a report). You approve the plan in Agent Inbox and review the pull request.
+title: "[agent] "
+labels: ["agent:ready"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Brief the agents like a colleague who has never seen this repository. The **check command** is the contract:
+        it runs on a clean copy with the change applied, without network access.
+  - type: dropdown
+    id: team
+    attributes:
+      label: Agent team
+      description: Who does the work. Repositories can add their own teams in .agents/config.toml (type the name in the task then).
+      options: ["repository default", "coding", "ux-ui", "devops", "marketing", "security-fix", "security-audit"]
+      default: 0
+  - type: textarea
+    id: request
+    attributes:
+      label: What should be done?
+      description: Goal, context an outsider would miss, constraints (e.g. "no new dependencies").
+    validations:
+      required: true
+  - type: textarea
+    id: criteria
+    attributes:
+      label: Acceptance criteria
+      description: One checkable statement per line.
+      placeholder: |
+        - existing tests still pass
+        - GET /items/{id} returns 404 for unknown ids
+  - type: input
+    id: check
+    attributes:
+      label: Check command
+      description: Leave empty to use the repository's verify_command (.agents/config.toml). Not needed for security-audit.
+      placeholder: python -m pytest -q
+  - type: input
+    id: base
+    attributes:
+      label: Base branch
+      value: main
+  - type: input
+    id: budget
+    attributes:
+      label: Budget (USD)
+      value: "3"
+  - type: dropdown
+    id: plan
+    attributes:
+      label: Plan first
+      options: ["Yes", "No"]
+      default: 0
+  - type: dropdown
+    id: model
+    attributes:
+      label: Coder model
+      options: ["profile default", "cheap", "strong"]
+      default: 0
