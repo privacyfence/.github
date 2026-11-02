@@ -17,7 +17,7 @@ body:
     attributes:
       label: Agent team
       description: Who does the work. Repositories can add their own teams in .agents/config.toml (type the name in the task then).
-      options: ["repository default", "coding", "ux-ui", "devops", "marketing", "security-fix", "security-audit"]
+      options: ["repository default", "coding", "ux-ui", "devops", "marketing", "security-fix", "security-audit", "research"]
       default: 0
   - type: textarea
     id: request
@@ -38,7 +38,7 @@ body:
     id: check
     attributes:
       label: Check command
-      description: Leave empty to use the repository's verify_command (.agents/config.toml). Not needed for security-audit.
+      description: Leave empty to use the repository's verify_command (.agents/config.toml). Not needed for security-audit or research.
       placeholder: python -m pytest -q
   - type: input
     id: base
