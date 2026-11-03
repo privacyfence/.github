@@ -17,7 +17,7 @@ body:
     attributes:
       label: Agent team
       description: Who does the work. Repositories can add their own teams in .agents/config.toml (type the name in the task then).
-      options: ["repository default", "coding", "ux-ui", "devops", "marketing", "security-fix", "security-audit", "research"]
+      options: ["repository default", "coding", "ux-ui", "devops", "marketing", "security-fix", "security-audit", "research", "website-review"]
       default: 0
   - type: textarea
     id: request
@@ -60,5 +60,5 @@ body:
     id: model
     attributes:
       label: Coder model
-      options: ["profile default", "cheap", "strong"]
+      options: ["profile default", "cheap", "mid", "strong"]
       default: 0
